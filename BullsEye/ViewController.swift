@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
@@ -101,7 +102,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startNewGame() {
-       totalScore = 0
+        let transition = CATransition()
+        transition.type = kCATransitionFade
+        transition.duration = 1
+        transition.timingFunction = CAMediaTimingFunction(
+            name: kCAMediaTimingFunctionEaseOut
+        )
+        view.layer.add(transition, forKey: nil)
+        
+        totalScore = 0
         round = 0
         startNewRound()
     }
